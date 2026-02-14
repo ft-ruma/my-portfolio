@@ -45,13 +45,13 @@
 
         .blob { position: fixed; width: 50vw; height: 50vw; background: var(--accent); filter: blur(120px); border-radius: 50%; z-index: -2; opacity: 0.15; pointer-events: none; }
 
-        nav { position: fixed; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; z-index: 100; mix-blend-mode: difference; }
+        nav { position: fixed; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; z-index: 100; mix-blend-mode: difference; box-sizing: border-box; }
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .hero h1 { font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; margin: 0; line-height: 0.8; letter-spacing: -4px; text-transform: uppercase; }
         .outline-text { -webkit-text-stroke: 1.5px white; color: transparent; opacity: 0.4; }
 
-        .section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 100px 5%; }
+        .section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 100px 5%; box-sizing: border-box;}
 
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
@@ -92,6 +92,9 @@
             text-transform: uppercase;
         }
 
+        .contact-link { color: var(--accent); text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .contact-link:hover { text-shadow: 0 0 10px var(--accent); }
+
         /* Project Status Tags */
         .status-tag {
             font-size: 0.7rem;
@@ -124,7 +127,7 @@
 
     <nav>
         <div style="font-weight: 900; font-size: 1.5rem;">RT.</div>
-        <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 2px;">SRI LANKA</div>
+        <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 2px;">MATARA, SRI LANKA</div>
     </nav>
 
     <div class="hero">
@@ -137,12 +140,19 @@
         <div class="glass-card" id="card-it">
             <div class="decorative-shape" id="shape1"></div>
             <h2 style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px;">Digital <span style="color: var(--accent)">Architect</span></h2>
-            <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.7;">NSBM Green University | Victoria University '27. Specializing in secure infrastructure and high-performance engineering.</p>
+            <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.7;">
+                [cite_start]<strong>Victoria University (AU) & NSBM Green University</strong> [cite: 12, 13]<br>
+                [cite_start]Bachelor of Information Technology (Major in Cyber Security) '25 - Present [cite: 9, 10, 11]
+            </p>
+            <p style="font-size: 1rem; line-height: 1.6; opacity: 0.6;">
+                [cite_start]Rahula College Matara Alumni[cite: 45, 48]. [cite_start]Ordinary Level: 8A's with a B pass[cite: 19].
+            </p>
             <div style="margin-top: 40px;">
-                <div class="skill-tag">Pentesting</div>
-                <div class="skill-tag">Web & Mobile</div>
-                <div class="skill-tag">Python</div>
-                <div class="skill-tag">Problem Solving</div>
+                [cite_start]<div class="skill-tag">Cyber Security [cite: 21]</div>
+                [cite_start]<div class="skill-tag">Application Development [cite: 24]</div>
+                [cite_start]<div class="skill-tag">Web Development [cite: 26]</div>
+                [cite_start]<div class="skill-tag">Leadership [cite: 28]</div>
+                [cite_start]<div class="skill-tag">Creativity [cite: 27]</div>
             </div>
         </div>
     </section>
@@ -153,16 +163,20 @@
             <h2 style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px;">Software <span style="color: var(--project)">Labs</span></h2>
             <div class="achievement-grid">
                 <div class="medal-item" style="border-left-color: var(--project);">
+                    <strong>Nova Sites</strong> <span class="status-tag completed">LIVE</span>
+                    [cite_start]<br>Web & Mobile Application Solutions. [cite: 57]
+                </div>
+                <div class="medal-item" style="border-left-color: var(--project);">
                     <strong>Eventra</strong> <span class="status-tag completed">COMPLETED</span>
                     <br>Campus event management mobile application.
                 </div>
                 <div class="medal-item" style="border-left-color: var(--project);">
-                    <strong>E-Commerce Website</strong> <span class="status-tag completed">COMPLETED</span>
-                    <br> E-Commerce website for shop.
+                    <strong>E-Commerce</strong> <span class="status-tag completed">COMPLETED</span>
+                    <br> Full-stack shop solutions.
                 </div>
                 <div class="medal-item" style="border-left-color: var(--accent);">
-                    <strong>GardianGo</strong> <span class="status-tag coming-soon">COMING SOON</span>
-                    <br>Innovative Mobile Application map alrming project.
+                    <strong>GardianGo</strong> <span class="status-tag coming-soon">DEVELOPING</span>
+                    <br>Innovative map alarming project.
                 </div>
             </div>
         </div>
@@ -171,12 +185,20 @@
     <section class="section">
         <div class="glass-card" id="card-sports">
             <div class="decorative-shape" id="shape2" style="background: linear-gradient(45deg, var(--victory), #ff6600);"></div>
-            <h2 style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px;">Athletic <span style="color: var(--victory)">Excellence</span></h2>
+            <h2 style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px;">Track <span style="color: var(--victory)">Records</span></h2>
             <div class="achievement-grid">
-                <div class="medal-item"><strong>2023</strong><br>All Island School Games: 4x100m Colours.</div>
-                <div class="medal-item" style="border-left-color: var(--victory);"><strong>2019</strong><br>Meet Records: All Island Relay Champ.</div>
-                <div class="medal-item"><strong>2017</strong><br>All Island Relay: 4x100m (3rd Place).</div>
-                <div class="medal-item"><strong>Multisport</strong><br>Chess, Cricket, Volleyball, Swimming.</div>
+                <div class="medal-item" style="border-left-color: var(--victory);">
+                    <strong>2019 - All Island Meet</strong><br>
+                    [cite_start]1st Place & New Records in 200x4, 100x4, and 50x4 Relays. [cite: 29, 30, 31]
+                </div>
+                <div class="medal-item">
+                    <strong>2017 - Relay Champ</strong><br>
+                    [cite_start]3rd Place & New Record in 100x4 Relay. [cite: 32, 33, 34]
+                </div>
+                <div class="medal-item">
+                    <strong>Leadership</strong><br>
+                    [cite_start]School Athletic Captain (2023/24). [cite: 46, 47]
+                </div>
             </div>
         </div>
     </section>
@@ -184,11 +206,24 @@
     <section class="section">
         <div class="glass-card" id="card-societies">
             <div class="decorative-shape" id="shape3" style="background: linear-gradient(45deg, var(--leadership), #ff00ff);"></div>
-            <h2 style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px;">Clubs & <span style="color: var(--leadership)">Societies</span></h2>
+            <h2 style="font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 20px;">Impact & <span style="color: var(--leadership)">Leadership</span></h2>
             <div class="achievement-grid">
-                <div class="medal-item" style="border-left-color: var(--leadership);"><strong>2021-2025</strong><br>School Prefect.</div>
-                <div class="medal-item" style="border-left-color: var(--leadership);"><strong>2024</strong><br>School Athletic Captain.</div>
-                <div class="medal-item" style="border-left-color: var(--leadership);"><strong>2022-2025</strong><br>LEO Club Member.</div>
+                [cite_start]<div class="medal-item" style="border-left-color: var(--leadership);"><strong>2021-2025</strong><br>School Prefect at Rahula College. [cite: 43, 44]</div>
+                [cite_start]<div class="medal-item" style="border-left-color: var(--leadership);"><strong>Leo Club</strong><br>Member of Leo Nilawala - Matara (2024-Present). [cite: 36, 37]</div>
+                [cite_start]<div class="medal-item" style="border-left-color: var(--leadership);"><strong>Production</strong><br>Organized "Sandwani" Concert (1500+ Audience). [cite: 53]</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-card" id="card-contact">
+            <h2 style="font-size: clamp(2rem, 6vw, 3rem);">Connect</h2>
+            <div style="margin-top: 30px; display: grid; gap: 15px; font-size: 1.1rem;">
+                [cite_start]<div>📍 5/42, Mahanamapura, Matara [cite: 6]</div>
+                [cite_start]<div>📞 <a href="tel:+94702428202" class="contact-link">+94 70 242 8202</a> [cite: 7]</div>
+                [cite_start]<div>✉️ <a href="mailto:rumethft@gmail.com" class="contact-link">rumethft@gmail.com</a> [cite: 15]</div>
+                [cite_start]<div>🌐 <a href="https://ft-ruma.github.io/my-portfolio/" target="_blank" class="contact-link">Portfolio Website</a> [cite: 8]</div>
+                [cite_start]<div>📸 Instagram: <a href="https://instagram.com/ft_ruma" class="contact-link">@ft_ruma</a> [cite: 55]</div>
             </div>
         </div>
     </section>
@@ -223,7 +258,8 @@
             { id: "#card-it", color: "#00f2ff", items: "#card-it .medal-item" },
             { id: "#card-projects", color: "#00ff88", items: "#card-projects .medal-item" },
             { id: "#card-sports", color: "#ffcc00", items: "#card-sports .medal-item" },
-            { id: "#card-societies", color: "#a200ff", items: "#card-societies .medal-item" }
+            { id: "#card-societies", color: "#a200ff", items: "#card-societies .medal-item" },
+            { id: "#card-contact", color: "#ffffff", items: "" }
         ];
 
         sections.forEach(s => {
@@ -232,10 +268,12 @@
                 y: 150, opacity: 0, rotateX: -15, scale: 0.9
             });
 
-            gsap.to(s.items, {
-                scrollTrigger: { trigger: s.id, start: "top 60%" },
-                opacity: 1, y: 0, stagger: 0.2, duration: 0.8
-            });
+            if(s.items){
+                gsap.to(s.items, {
+                    scrollTrigger: { trigger: s.id, start: "top 60%" },
+                    opacity: 1, y: 0, stagger: 0.2, duration: 0.8
+                });
+            }
 
             ScrollTrigger.create({
                 trigger: s.id, start: "top center",
