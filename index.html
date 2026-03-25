@@ -1,357 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Sites | Premium Engineering & Cyber Security</title>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet">
+    <title>Rumeth Thathsilu | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+    
     <style>
         :root {
-            --bg: #020204;
-            --primary: #00f2ff;
-            --accent: #7000ff;
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.5);
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-color: #0a192f;
+            --text-main: #ccd6f6;
+            --text-secondary: #8892b0;
+            --accent: #64ffda;
+            --card-bg: #112240;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
+        html {
             scroll-behavior: smooth;
         }
 
-        /* --- GPU Accelerated Background --- */
-        .bg-glow {
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            filter: blur(120px);
-            pointer-events: none;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
-        .orb {
-            position: absolute;
-            width: 40vw;
-            height: 40vw;
-            border-radius: 50%;
-            opacity: 0.1;
-            will-change: transform;
-            animation: drift 25s infinite alternate ease-in-out;
-        }
-
-        .orb-1 {
-            background: var(--primary);
-            top: -10%;
-            left: -5%;
-        }
-
-        .orb-2 {
-            background: var(--accent);
-            bottom: -10%;
-            right: -5%;
-            animation-delay: -7s;
-        }
-
-        @keyframes drift {
-            from {
-                transform: translate(0, 0) scale(1);
-            }
-
-            to {
-                transform: translate(100px, 50px) scale(1.1);
-            }
-        }
-
-        /* --- Navigation --- */
+        /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(2, 2, 4, 0.7);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 5%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -1px;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
-        .logo span {
-            color: var(--primary);
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
 
-        /* --- Hero --- */
-        .hero {
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        #hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
             padding: 0 10%;
         }
 
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 9vw, 6.5rem);
-            line-height: 0.95;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
         }
 
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary), #bc13fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .highlight {
+            color: var(--accent);
         }
 
-        /* --- Content Sections --- */
-        .section {
-            padding: 120px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
+        .hero-content h2 {
+            color: var(--text-secondary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            min-height: 40px;
         }
 
-        .section-title {
+        .hero-content p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        /* Sections Common */
+        section {
+            padding: 100px 10%;
+        }
+
+        h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
         }
 
-        .bento-grid {
+        h2::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 300px;
+            background: #233554;
+            margin-left: 20px;
+        }
+
+        /* Skills */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 220px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1.5rem;
         }
 
-        .bento-item {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 2.5rem;
-            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-info h3 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .bento-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--primary);
-            transform: translateY(-8px);
+        .tech-stack span {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-family: monospace;
         }
 
-        .item-large {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        .item-wide {
-            grid-column: span 2;
-        }
-
-        .icon-box {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: auto;
-        }
-
-        /* --- Contact List --- */
-        .contact-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--glass);
-            padding: 12px 24px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
+        .project-link {
+            color: var(--text-main);
             text-decoration: none;
-            color: #fff;
-            margin: 5px;
-            transition: 0.3s;
-            font-weight: 600;
+            font-size: 1.2rem;
+            transition: color 0.3s;
         }
 
-        .contact-pill:hover {
-            background: var(--primary);
-            color: #000;
-            border-color: var(--primary);
+        .project-link:hover {
+            color: var(--accent);
         }
 
-        /* --- Animations --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
+        /* Contact */
+        #contact {
+            text-align: center;
         }
 
+        #contact h2::after {
+            display: none;
+        }
+
+        #contact p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .contact-icon {
+            color: var(--text-main);
+            font-size: 2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .contact-icon:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 5rem 8%;
-            border-top: 1px solid var(--border);
-            color: var(--text-dim);
+            padding: 2rem;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        @media (max-width: 1024px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        @media (max-width: 600px) {
-            .bento-grid {
-                grid-template-columns: 1fr;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .item-large,
-            .item-wide {
-                grid-column: span 1;
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            h2::after {
+                width: 100px;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <div class="bg-glow">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-    </div>
-
     <nav>
-        <div class="logo">NOVA<span>SITES</span></div>
-        <a href="tel:+94788224405" class="contact-pill" style="font-size: 0.8rem; padding: 8px 16px;">
-            <i class="fas fa-phone"></i> +94 78 822 4405
-        </a>
+        <div class="logo">ft_ruma</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <header class="hero">
-        <div class="reveal"
-            style="font-weight: 800; color: var(--primary); letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">
-            SECURE BY DEFAULT</div>
-        <h1 class="reveal">WE BUILD <br> <span class="gradient-text">DIGITAL ARMOR.</span></h1>
-        <p class="reveal" style="max-width: 650px; color: var(--text-dim); font-size: 1.2rem; margin-bottom: 2.5rem;">
-            Elite web engineering for the next generation. Specializing in high-performance e-commerce and unhackable
-            systems.
-        </p>
-        <div class="reveal" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-            <a href="mailto:nova.sites.lk@gmail.com" class="contact-pill"><i class="fas fa-envelope"></i> Email Us</a>
-            <a href="https://wa.me/94788224405" class="contact-pill"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <header id="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Rumeth Thathsilu</span></h1>
+            <h2 class="typing-text"></h2>
+            <p>IT & Cyber Security Undergraduate | Founder & CEO at Nova Sites</p>
+            <a href="#projects" class="btn">View My Work</a>
         </div>
     </header>
 
-    <section id="services" class="section">
-        <h2 class="section-title reveal">The Nova Ecosystem</h2>
-        <div class="bento-grid">
-            <div class="bento-item item-large reveal">
-                <div class="icon-box"><i class="fas fa-user-shield"></i></div>
-                <h3>Cyber Defense</h3>
-                <p style="color: var(--text-dim); margin-top: 10px;">Our lead developer is a Cyber Security major at
-                    NSBM. We don't just write code; we build fortresses. Vulnerability testing included in every
-                    deployment.</p>
-            </div>
-            <div class="bento-item item-wide reveal">
-                <div class="icon-box"><i class="fas fa-shopping-cart"></i></div>
-                <h3>E-Commerce Mastery</h3>
-                <p style="color: var(--text-dim);">Custom-built Shopify, WooCommerce, and Headless E-com solutions
-                    optimized for Sri Lankan payment gateways.</p>
-            </div>
-            <div class="bento-item reveal">
-                <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Mobile Apps</h3>
-                <p style="color: var(--text-dim);">Flutter-powered cross-platform apps.</p>
-            </div>
-            <div class="bento-item reveal">
-                <div class="icon-box"><i class="fas fa-search-dollar"></i></div>
-                <h3>Advanced SEO</h3>
-                <p style="color: var(--text-dim);">Rank #1 with high-performance metrics.</p>
-            </div>
-            <div class="bento-item item-wide reveal">
-                <div class="icon-box"><i class="fas fa-code"></i></div>
-                <h3>Full Stack Dev</h3>
-                <p style="color: var(--text-dim);">Scalable PHP, Node.js, and Python backends. Built to handle thousands
-                    of concurrent users.</p>
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>I am a passionate technology enthusiast pursuing a Bachelor of Information Technology with a Major in Cyber Security at Victoria University (NSBM Green University). Based in Matara, Sri Lanka, I combine my academic foundation in security and IT management with hands-on development experience.</p>
+                <p>As the founder of Nova Sites, I lead a digital agency specializing in modern web design, mobile application development, and digital branding. I love building practical solutions that solve real-world problems.</p>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div style="background: linear-gradient(135deg, var(--accent), var(--primary)); border-radius: 40px; padding: 80px 40px; text-align: center; color: #000;"
-            class="reveal">
-            <h2 style="font-size: 3rem; margin-bottom: 20px;">Ready to Start?</h2>
-            <p style="font-weight: 600; margin-bottom: 40px; opacity: 0.8;">Secure your digital future with Rumeth
-                Thathsilu & the Nova Sites team.</p>
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
-                <a href="mailto:nova.sites.lk@gmail.com"
-                    style="background: #000; color: #fff; padding: 20px 40px; border-radius: 15px; text-decoration: none; font-weight: 800;">Get
-                    a Free Quote</a>
+    <section id="skills" class="fade-in">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fa-brands fa-html5"></i> HTML5</div>
+            <div class="skill-card"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+            <div class="skill-card"><i class="fa-brands fa-js"></i> JavaScript</div>
+            <div class="skill-card"><i class="fa-brands fa-php"></i> PHP</div>
+            <div class="skill-card"><i class="fa-solid fa-mobile-screen"></i> Flutter</div>
+            <div class="skill-card"><i class="fa-solid fa-shield-halved"></i> Cyber Security</div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>GuardianGo</h3>
+                    <p>A location-based alarm Android application designed specifically for public transport users to ensure they never miss their stop.</p>
+                    <div class="tech-stack">
+                        <span>Android Studio</span>
+                        <span>Java/Kotlin</span>
+                    </div>
+                    <a href="https://github.com/ft_ruma" target="_blank" class="project-link">View Repository <i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Ride-Sharing Mobile App</h3>
+                    <p>A comprehensive ride-sharing application clone featuring real-time tracking, user authentication, and intuitive UI/UX design.</p>
+                    <div class="tech-stack">
+                        <span>Flutter</span>
+                        <span>Firebase</span>
+                    </div>
+                    <a href="https://github.com/ft_ruma" target="_blank" class="project-link">View Repository <i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Nova Sites Agency</h3>
+                    <p>Founded and actively manage a digital agency delivering custom web development, flyer creation, and business branding solutions to clients.</p>
+                    <div class="tech-stack">
+                        <span>HTML/CSS/JS</span>
+                        <span>PHP</span>
+                    </div>
+                    <a href="#" class="project-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <h2>Get In Touch</h2>
+        <p>Currently open for new opportunities and collaborations.</p>
+        <div class="contact-links">
+            <a href="https://github.com/ft_ruma" target="_blank" class="contact-icon"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:your.email@example.com" class="contact-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" class="contact-icon"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </section>
 
     <footer>
-        <p>NOVA SITES | COLOMBO, SRI LANKA</p>
-        <p style="margin-top: 10px; opacity: 0.6;">Founder: Rumeth Thathsilu (ft_ruma)</p>
-        <p style="margin-top: 5px; opacity: 0.6;">Bachelor of IT (Cyber Security) - Victoria University Australia / NSBM
-        </p>
+        <p>&copy; 2026 Rumeth Thathsilu. All rights reserved.</p>
     </footer>
 
     <script>
-        // Initialize GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+        // Typing Effect for Hero Section
+        const typingText = document.querySelector('.typing-text');
+        const words = ['Web Developer', 'Software Engineer', 'App Developer', 'Cyber Security Enthusiast'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-        // Hero Stagger
-        gsap.to(".hero .reveal", {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: "power4.out"
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typing effect on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if(words.length) setTimeout(type, 1000);
         });
 
-        // Section Reveals
-        document.querySelectorAll(".section .reveal").forEach(el => {
-            gsap.to(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
+        // Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
-
 </html>
