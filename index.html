@@ -3,54 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumeth Thathsilu | Portfolio</title>
+    <title>Rumeth Thathsilu | Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Modern Color Palette & Variables */
         :root {
-            --bg-color: #0a192f;
-            --text-main: #ccd6f6;
+            --bg-color: #050b14;
+            --bg-secondary: #0a1526;
+            --text-main: #e6f1ff;
             --text-secondary: #8892b0;
             --accent: #64ffda;
-            --card-bg: #112240;
+            --accent-glow: rgba(100, 255, 218, 0.4);
+            --card-bg: rgba(17, 34, 64, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.05);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #233554;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Navigation */
+        /* Ambient Background Glows */
+        .bg-glow {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(100,255,218,0.05) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(60px);
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        .glow-1 { top: -10%; left: -10%; }
+        .glow-2 { bottom: 20%; right: -10%; animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
+
+        /* Glassmorphism Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            background: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            background: rgba(5, 11, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .logo {
             color: var(--accent);
             font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: text-shadow 0.3s ease;
+        }
+        
+        .logo:hover {
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         .nav-links {
@@ -59,17 +108,51 @@
         }
 
         .nav-links li {
-            margin-left: 2rem;
+            margin-left: 2.5rem;
         }
 
         .nav-links a {
             color: var(--text-main);
             text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-main);
+            margin: 5px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
         /* Hero Section */
@@ -78,134 +161,178 @@
             display: flex;
             align-items: center;
             padding: 0 10%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-intro {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 1rem;
-        }
-
-        .highlight {
-            color: var(--accent);
+            color: #ccd6f6;
         }
 
         .hero-content h2 {
             color: var(--text-secondary);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            min-height: 40px;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
         }
 
         .hero-content p {
             color: var(--text-secondary);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            max-width: 540px;
+            margin-bottom: 2.5rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 1.75rem;
+            background: transparent;
             border: 1px solid var(--accent);
             color: var(--accent);
             text-decoration: none;
             border-radius: 4px;
-            transition: all 0.3s;
+            font-family: monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn:hover {
             background: rgba(100, 255, 218, 0.1);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
         }
 
         /* Sections Common */
         section {
             padding: 100px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        h2.section-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
             color: var(--text-main);
             display: flex;
             align-items: center;
         }
 
-        h2::after {
+        h2.section-heading::after {
             content: "";
             display: block;
             height: 1px;
-            width: 300px;
-            background: #233554;
+            width: 100%;
+            max-width: 300px;
+            background: var(--glass-border);
             margin-left: 20px;
+        }
+
+        /* About Section */
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
         }
 
         /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1.5rem;
         }
 
         .skill-card {
             background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
             padding: 1.5rem;
             text-align: center;
-            border-radius: 8px;
-            transition: transform 0.3s;
-            border-bottom: 3px solid transparent;
+            border-radius: 12px;
+            transition: all 0.4s ease;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            border-bottom: 3px solid var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -15px rgba(100, 255, 218, 0.2);
         }
 
         .skill-card i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
         }
 
         /* Projects */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
             background: var(--card-bg);
-            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
             padding: 2rem;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            border-color: rgba(100, 255, 218, 0.3);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
         }
 
         .project-info h3 {
             color: var(--text-main);
             margin-bottom: 1rem;
             font-size: 1.5rem;
+            font-weight: 600;
         }
 
         .project-info p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .tech-stack {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .tech-stack span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--accent);
             font-family: monospace;
+            background: rgba(100, 255, 218, 0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
         }
 
         .project-link {
@@ -213,6 +340,7 @@
             text-decoration: none;
             font-size: 1.2rem;
             transition: color 0.3s;
+            margin-right: 15px;
         }
 
         .project-link:hover {
@@ -222,15 +350,21 @@
         /* Contact */
         #contact {
             text-align: center;
+            max-width: 600px;
         }
 
-        #contact h2::after {
+        #contact h2.section-heading {
+            justify-content: center;
+        }
+
+        #contact h2.section-heading::after {
             display: none;
         }
 
         #contact p {
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
         }
 
         .contact-links {
@@ -241,13 +375,23 @@
 
         .contact-icon {
             color: var(--text-main);
-            font-size: 2rem;
-            transition: color 0.3s, transform 0.3s;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
         }
 
         .contact-icon:hover {
-            color: var(--accent);
+            color: var(--bg-color);
+            background: var(--accent);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--accent-glow);
         }
 
         /* Footer */
@@ -255,14 +399,15 @@
             text-align: center;
             padding: 2rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-family: monospace;
         }
 
         /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .fade-in.visible {
@@ -272,117 +417,161 @@
 
         /* Responsive */
         @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                background: var(--bg-secondary);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 70%;
+                transition: right 0.4s ease;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
-            .hero-content h1 {
-                font-size: 2.5rem;
+
+            .nav-links.active {
+                right: 0;
             }
-            h2::after {
-                width: 100px;
+
+            .nav-links li {
+                margin: 2rem 0;
             }
+
+            /* Hamburger Animation */
+            .hamburger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle .line2 { opacity: 0; }
+            .hamburger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content h2 { font-size: 2rem; }
+            
+            section { padding: 80px 5%; }
+            h2.section-heading::after { width: 100px; }
         }
     </style>
 </head>
 <body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
     <nav>
-        <div class="logo">ft_ruma</div>
+        <div class="logo">ft_ruma.</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">01. About</a></li>
+            <li><a href="#skills">02. Skills</a></li>
+            <li><a href="#projects">03. Projects</a></li>
+            <li><a href="#contact">04. Contact</a></li>
         </ul>
+        <div class="hamburger">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+        </div>
     </nav>
 
     <header id="hero">
         <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Rumeth Thathsilu</span></h1>
-            <h2 class="typing-text"></h2>
-            <p>IT & Cyber Security Undergraduate | Founder & CEO at Nova Sites</p>
-            <a href="#projects" class="btn">View My Work</a>
+            <span class="hero-intro fade-in">Hi, my name is</span>
+            <h1 class="fade-in">Rumeth Thathsilu.</h1>
+            <h2 class="typing-text fade-in"></h2>
+            <p class="fade-in">I'm an IT & Cyber Security Undergraduate and the Founder & CEO of Nova Sites. I specialize in building exceptional digital experiences, from sleek web designs to robust mobile applications.</p>
+            <a href="#projects" class="btn fade-in">Check out my work!</a>
         </div>
     </header>
 
     <section id="about" class="fade-in">
-        <h2>About Me</h2>
+        <h2 class="section-heading">About Me</h2>
         <div class="about-container">
             <div class="about-text">
-                <p>I am a passionate technology enthusiast pursuing a Bachelor of Information Technology with a Major in Cyber Security at Victoria University (NSBM Green University). Based in Matara, Sri Lanka, I combine my academic foundation in security and IT management with hands-on development experience.</p>
-                <p>As the founder of Nova Sites, I lead a digital agency specializing in modern web design, mobile application development, and digital branding. I love building practical solutions that solve real-world problems.</p>
+                <p>Hello! I am a passionate technology enthusiast currently pursuing a Bachelor of Information Technology with a Major in Cyber Security at Victoria University (NSBM Green University). Based in Matara, Sri Lanka, I combine my strong academic foundation with hands-on development experience.</p>
+                <p>As the founder of <strong>Nova Sites</strong>, I lead a digital agency specializing in modern web design, mobile app development, and digital branding. Whether it's crafting a ride-sharing app clone or securing a network, I love building practical solutions that solve real-world problems.</p>
             </div>
         </div>
     </section>
 
     <section id="skills" class="fade-in">
-        <h2>Technical Skills</h2>
+        <h2 class="section-heading">My Toolkit</h2>
         <div class="skills-grid">
-            <div class="skill-card"><i class="fa-brands fa-html5"></i> HTML5</div>
-            <div class="skill-card"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
-            <div class="skill-card"><i class="fa-brands fa-js"></i> JavaScript</div>
-            <div class="skill-card"><i class="fa-brands fa-php"></i> PHP</div>
-            <div class="skill-card"><i class="fa-solid fa-mobile-screen"></i> Flutter</div>
-            <div class="skill-card"><i class="fa-solid fa-shield-halved"></i> Cyber Security</div>
+            <div class="skill-card"><i class="fa-brands fa-html5"></i> <span>HTML5</span></div>
+            <div class="skill-card"><i class="fa-brands fa-css3-alt"></i> <span>CSS3</span></div>
+            <div class="skill-card"><i class="fa-brands fa-js"></i> <span>JavaScript</span></div>
+            <div class="skill-card"><i class="fa-brands fa-php"></i> <span>PHP</span></div>
+            <div class="skill-card"><i class="fa-solid fa-mobile-screen"></i> <span>Flutter</span></div>
+            <div class="skill-card"><i class="fa-solid fa-shield-halved"></i> <span>Cyber Security</span></div>
         </div>
     </section>
 
     <section id="projects" class="fade-in">
-        <h2>Featured Projects</h2>
+        <h2 class="section-heading">Some Things I've Built</h2>
         <div class="project-grid">
             <div class="project-card">
                 <div class="project-info">
                     <h3>GuardianGo</h3>
-                    <p>A location-based alarm Android application designed specifically for public transport users to ensure they never miss their stop.</p>
+                    <p>A location-based alarm Android application designed specifically for public transport users. It alerts users when they are approaching their destination, ensuring they never miss their stop.</p>
                     <div class="tech-stack">
                         <span>Android Studio</span>
-                        <span>Java/Kotlin</span>
+                        <span>Java</span>
+                        <span>Kotlin</span>
                     </div>
-                    <a href="https://github.com/ft_ruma" target="_blank" class="project-link">View Repository <i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/ft_ruma" target="_blank" class="project-link" title="GitHub Repo"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-info">
                     <h3>Ride-Sharing Mobile App</h3>
-                    <p>A comprehensive ride-sharing application clone featuring real-time tracking, user authentication, and intuitive UI/UX design.</p>
+                    <p>A comprehensive ride-sharing application clone featuring real-time tracking, secure user authentication, and an intuitive UI/UX design tailored for seamless navigation.</p>
                     <div class="tech-stack">
                         <span>Flutter</span>
                         <span>Firebase</span>
+                        <span>Dart</span>
                     </div>
-                    <a href="https://github.com/ft_ruma" target="_blank" class="project-link">View Repository <i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/ft_ruma" target="_blank" class="project-link" title="GitHub Repo"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-info">
                     <h3>Nova Sites Agency</h3>
-                    <p>Founded and actively manage a digital agency delivering custom web development, flyer creation, and business branding solutions to clients.</p>
+                    <p>The official platform for my digital agency. We deliver custom web development, flyer creation, and business branding solutions to help clients establish a strong digital footprint.</p>
                     <div class="tech-stack">
                         <span>HTML/CSS/JS</span>
                         <span>PHP</span>
+                        <span>UI/UX</span>
                     </div>
-                    <a href="#" class="project-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="#" class="project-link" title="Live Site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="fade-in">
-        <h2>Get In Touch</h2>
-        <p>Currently open for new opportunities and collaborations.</p>
+        <h2 class="section-heading">What's Next?</h2>
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; color: #ccd6f6;">Get In Touch</h1>
+        <p>I'm currently open for new opportunities, freelance projects, and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+        <br>
+        <a href="mailto:rumethft@gmail.com" class="btn">Say Hello</a>
+        <br><br><br>
         <div class="contact-links">
             <a href="https://github.com/ft_ruma" target="_blank" class="contact-icon"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/rumeth-thathsilu/" target="_blank" class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="mailto:rumethft@gmail.com" class="contact-icon"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/rumeth-thathsilu/" class="contact-icon"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Rumeth Thathsilu. All rights reserved.</p>
+        <p>Designed & Built by Rumeth Thathsilu &copy; 2026</p>
     </footer>
 
     <script>
         // Typing Effect for Hero Section
         const typingText = document.querySelector('.typing-text');
-        const words = ['Web Developer', 'Software Engineer', 'App Developer', 'Cyber Security Enthusiast'];
+        const words = ['I build modern web apps.', 'I develop mobile solutions.', 'I secure digital environments.'];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -398,42 +587,70 @@
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 50 : 100;
+            let typeSpeed = isDeleting ? 30 : 80;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // Pause at end of word
+                typeSpeed = 2000; // Pause at end of sentence
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500; // Pause before new word
+                typeSpeed = 400; // Pause before new sentence
             }
 
             setTimeout(type, typeSpeed);
         }
 
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li');
+
+        hamburger.addEventListener('click', () => {
+            // Toggle Nav
+            navLinks.classList.toggle('active');
+            // Burger Animation
+            hamburger.classList.toggle('toggle');
+        });
+
+        // Close mobile menu when clicking a link
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
         // Start typing effect on load
         document.addEventListener('DOMContentLoaded', () => {
             if(words.length) setTimeout(type, 1000);
+            
+            // Trigger initial fade-ins for hero section
+            document.querySelectorAll('#hero .fade-in').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 200); // Stagger the intro animations
+            });
         });
 
-        // Scroll Reveal Animation
+        // Scroll Reveal Animation for sections
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.15 // Trigger slightly later for a better feel
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    observer.unobserve(entry.target); 
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(section => {
+        // Observe sections (skip hero as it's handled on load)
+        document.querySelectorAll('section.fade-in').forEach(section => {
             observer.observe(section);
         });
     </script>
