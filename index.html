@@ -23,7 +23,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            cursor: none; /* Hide default cursor for custom one */
+            cursor: none; 
         }
 
         html { scroll-behavior: smooth; }
@@ -169,7 +169,7 @@
         .hero-content h2 {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--text-secondary); font-weight: 600; margin-bottom: 1.5rem;
-            height: 45px; /* space for typing */
+            height: 45px; 
         }
         .hero-content p {
             font-size: 1.1rem; color: var(--text-secondary);
@@ -199,7 +199,20 @@
             background: linear-gradient(90deg, var(--glass-border), transparent);
         }
 
-        /* --- SKILLS GRID --- */
+        /* --- SKILLS GRID WITH CATEGORIES --- */
+        .skill-category-wrapper {
+            margin-bottom: 4rem;
+        }
+        .category-heading {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+            padding-bottom: 5px;
+        }
         .skills-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;
         }
@@ -220,7 +233,7 @@
         }
         .skill-item:hover::before { opacity: 0.15; }
         .skill-item i { font-size: 3rem; color: var(--accent); margin-bottom: 1rem; }
-        .skill-item span { font-weight: 600; display: block; }
+        .skill-item span { font-weight: 600; display: block; font-size: 0.95rem; }
 
         /* --- 3D PROJECT CARDS --- */
         .project-grid {
@@ -236,7 +249,6 @@
         }
         .project-card:hover { border-color: rgba(14, 165, 233, 0.4); }
         
-        /* Inner content needs to pop out during 3D tilt */
         .project-inner { transform: translateZ(30px); }
         
         .project-header {
@@ -288,7 +300,7 @@
 
         /* Responsive */
         @media screen and (max-width: 768px) {
-            * { cursor: auto; } /* Disable custom cursor on mobile */
+            * { cursor: auto; } 
             .cursor-dot, .cursor-outline { display: none; }
             .nav-links { display: none; }
             section { padding: 80px 5%; }
@@ -346,14 +358,38 @@
 
     <section id="skills" class="reveal">
         <h2 class="section-title">02. Tech Arsenal</h2>
-        <div class="skills-grid">
-            <div class="skill-item hover-target"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
-            <div class="skill-item hover-target"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
-            <div class="skill-item hover-target"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
-            <div class="skill-item hover-target"><i class="fa-brands fa-php"></i><span>PHP</span></div>
-            <div class="skill-item hover-target"><i class="fa-solid fa-mobile-screen"></i><span>Flutter</span></div>
-            <div class="skill-item hover-target"><i class="fa-solid fa-shield-halved"></i><span>Cyber Security</span></div>
+        
+        <div class="skill-category-wrapper">
+            <h3 class="category-heading"><i class="fa-solid fa-laptop-code" style="margin-right: 8px;"></i> Frontend & Mobile</h3>
+            <div class="skills-grid">
+                <div class="skill-item hover-target"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+                <div class="skill-item hover-target"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
+                <div class="skill-item hover-target"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+                <div class="skill-item hover-target"><i class="fa-brands fa-react"></i><span>React.js</span></div>
+                <div class="skill-item hover-target"><i class="fa-solid fa-bolt"></i><span>Next.js</span></div>
+                <div class="skill-item hover-target"><i class="fa-solid fa-mobile-screen"></i><span>Flutter</span></div>
+            </div>
         </div>
+
+        <div class="skill-category-wrapper">
+            <h3 class="category-heading"><i class="fa-solid fa-server" style="margin-right: 8px;"></i> Backend & Database</h3>
+            <div class="skills-grid">
+                <div class="skill-item hover-target"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+                <div class="skill-item hover-target"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+                <div class="skill-item hover-target"><i class="fa-solid fa-database"></i><span>SQL / MySQL</span></div>
+                <div class="skill-item hover-target"><i class="fa-solid fa-code-branch"></i><span>REST APIs</span></div>
+            </div>
+        </div>
+
+        <div class="skill-category-wrapper">
+            <h3 class="category-heading"><i class="fa-solid fa-wrench" style="margin-right: 8px;"></i> Core & Tools</h3>
+            <div class="skills-grid">
+                <div class="skill-item hover-target"><i class="fa-solid fa-shield-halved"></i><span>Cyber Security</span></div>
+                <div class="skill-item hover-target"><i class="fa-brands fa-github"></i><span>Git & GitHub</span></div>
+                <div class="skill-item hover-target"><i class="fa-solid fa-pen-nib"></i><span>UI / UX Design</span></div>
+            </div>
+        </div>
+
     </section>
 
     <section id="projects">
@@ -436,7 +472,7 @@
                 const preloader = document.getElementById('preloader');
                 preloader.style.opacity = '0';
                 setTimeout(() => { preloader.style.visibility = 'hidden'; }, 800);
-            }, 1500); // Wait for boot animation
+            }, 1500); 
         });
 
         // 2. Custom Fluid Cursor
@@ -495,7 +531,7 @@
             }
             setTimeout(type, typeSpeed);
         }
-        setTimeout(type, 2000); // Start typing after preloader
+        setTimeout(type, 2000); 
 
         // 4. Scroll Reveal (3D Pop-in)
         const revealElements = document.querySelectorAll('.reveal');
@@ -517,13 +553,13 @@
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // x position within the element.
-                const y = e.clientY - rect.top;  // y position within the element.
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
                 
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
+                const rotateX = ((y - centerY) / centerY) * -10; 
                 const rotateY = ((x - centerX) / centerX) * 10;
                 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
@@ -535,7 +571,7 @@
             });
             
             card.addEventListener('mouseenter', () => {
-                card.style.transition = 'none'; // remove transition when entering to snap to mouse
+                card.style.transition = 'none'; 
             });
         });
     </script>
