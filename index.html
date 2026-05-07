@@ -3,30 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumeth Thathsilu | Software Engineer</title>
+    <title>Rumeth Thathsilu | Cyber Security & Dev</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        /* --- CORE VARIABLES --- */
         :root {
             --bg-base: #030712;
             --text-main: #f8fafc;
             --text-secondary: #94a3b8;
             --accent: #0ea5e9;
-            --accent-glow: rgba(14, 165, 233, 0.5);
+            --accent-glow: rgba(14, 165, 233, 0.4);
             --card-bg: rgba(15, 23, 42, 0.6);
             --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             cursor: none; 
         }
-
-        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-base);
@@ -37,288 +31,122 @@
 
         /* --- PRELOADER --- */
         #preloader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-base);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-base); z-index: 9999;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
             transition: opacity 0.8s ease, visibility 0.8s;
         }
-        .loader-text {
-            color: var(--accent);
-            font-family: monospace;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        .loader-bar {
-            width: 200px; height: 2px;
-            background: rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .loader-fill {
-            position: absolute;
-            top: 0; left: 0; height: 100%; width: 0%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent);
-            animation: loading 1.5s ease forwards;
-        }
-        @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 60%; }
-            100% { width: 100%; }
-        }
+        .loader-text { color: var(--accent); font-family: monospace; font-size: 1.2rem; margin-bottom: 20px; }
+        .loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; }
+        .loader-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent); animation: loading 1.5s ease forwards; }
+        @keyframes loading { 100% { width: 100%; } }
 
         /* --- CUSTOM CURSOR --- */
         .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+            border-radius: 50%; z-index: 9999; pointer-events: none;
         }
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 1px solid rgba(14, 165, 233, 0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-        .cursor-outline.hover-state {
-            width: 60px; height: 60px;
-            background-color: rgba(14, 165, 233, 0.1);
-            border-color: transparent;
-        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--accent); }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid var(--accent-glow); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+        .cursor-outline.hover-state { width: 60px; height: 60px; background-color: rgba(14, 165, 233, 0.1); border-color: transparent; }
 
         /* --- BACKGROUND FX --- */
-        .bg-noise {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.03;
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-        }
         .ambient-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -2;
-            animation: orbFloat 20s infinite alternate ease-in-out;
+            position: fixed; border-radius: 50%; filter: blur(100px); z-index: -2;
+            transition: transform 0.2s ease-out;
         }
-        .orb-1 { width: 50vw; height: 50vw; background: rgba(14, 165, 233, 0.1); top: -20%; left: -10%; }
-        .orb-2 { width: 40vw; height: 40vw; background: rgba(56, 189, 248, 0.05); bottom: -10%; right: -10%; animation-delay: -10s; }
-        
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10%, 10%) scale(1.2); }
-        }
+        .orb-1 { width: 400px; height: 400px; background: rgba(14, 165, 233, 0.15); top: 10%; left: 10%; }
+        .orb-2 { width: 300px; height: 300px; background: rgba(56, 189, 248, 0.1); bottom: 10%; right: 10%; }
 
         /* --- NAVIGATION --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%;
-            background: rgba(3, 7, 18, 0.7);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 8%; background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border);
             position: fixed; width: 100%; top: 0; z-index: 1000;
         }
-        .logo {
-            font-size: 1.5rem; font-weight: 800; color: var(--text-main);
-            position: relative;
-        }
+        .logo { font-size: 1.4rem; font-weight: 800; }
         .logo span { color: var(--accent); }
-        
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.9rem; font-weight: 500;
-            transition: color 0.3s;
-        }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO SECTION --- */
-        #hero {
-            height: 100vh; display: flex; align-items: center; padding: 0 10%;
-        }
+        /* --- HERO --- */
+        #hero { height: 100vh; display: flex; align-items: center; padding: 0 10%; }
         .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(14, 165, 233, 0.1);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            border-radius: 50px;
-            color: var(--accent);
-            font-family: monospace;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            display: inline-block; padding: 0.4rem 1rem; background: rgba(14, 165, 233, 0.1);
+            border: 1px solid var(--accent-glow); border-radius: 50px; color: var(--accent);
+            font-family: monospace; font-size: 0.8rem; margin-bottom: 1.5rem;
         }
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800; line-height: 1.1; margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-content h2 {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: var(--text-secondary); font-weight: 600; margin-bottom: 1.5rem;
-            height: 45px; 
-        }
-        .hero-content p {
-            font-size: 1.1rem; color: var(--text-secondary);
-            max-width: 600px; margin-bottom: 2.5rem;
-        }
+        h1 { font-size: clamp(3rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1rem; }
+        .typing-text { min-height: 40px; color: var(--text-secondary); font-size: 1.5rem; font-family: monospace; }
         
         .btn-primary {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 1rem 2rem;
-            background: var(--accent); color: #000;
-            text-decoration: none; font-weight: 600; border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 2rem;
+            padding: 1rem 2rem; background: var(--accent); color: #000;
+            text-decoration: none; font-weight: 600; border-radius: 8px; transition: 0.3s;
         }
-        .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 25px var(--accent-glow);
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--accent-glow); }
 
-        /* --- LAYOUT & SECTIONS --- */
-        section { padding: 120px 10%; max-width: 1400px; margin: 0 auto; }
-        .section-title {
-            font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem;
-            display: flex; align-items: center; gap: 20px;
-        }
-        .section-title::after {
-            content: ""; flex: 1; height: 1px; max-width: 300px;
-            background: linear-gradient(90deg, var(--glass-border), transparent);
-        }
+        /* --- SECTIONS --- */
+        section { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 3rem; display: flex; align-items: center; gap: 15px; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: var(--glass-border); }
 
-        /* --- SKILLS GRID WITH CATEGORIES --- */
-        .skill-category-wrapper {
-            margin-bottom: 4rem;
-        }
-        .category-heading {
-            color: var(--accent);
-            font-family: monospace;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            display: inline-block;
-            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
-            padding-bottom: 5px;
-        }
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;
-        }
+        /* --- SKILLS --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
         .skill-item {
             background: var(--card-bg); border: 1px solid var(--glass-border);
-            padding: 2rem 1.5rem; border-radius: 16px; text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative; overflow: hidden;
+            padding: 1.5rem; border-radius: 12px; text-align: center; transition: 0.3s;
         }
-        .skill-item::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
-            opacity: 0; transition: opacity 0.4s; z-index: -1;
-        }
-        .skill-item:hover {
-            transform: translateY(-10px); border-color: rgba(14, 165, 233, 0.3);
-        }
-        .skill-item:hover::before { opacity: 0.15; }
-        .skill-item i { font-size: 3rem; color: var(--accent); margin-bottom: 1rem; }
-        .skill-item span { font-weight: 600; display: block; font-size: 0.95rem; }
+        .skill-item:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .skill-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 0.8rem; display: block; }
+        .skill-item:hover i { animation: iconPulse 1.5s infinite; }
+        @keyframes iconPulse { 50% { transform: scale(1.1); filter: drop-shadow(0 0 8px var(--accent)); } }
 
-        /* --- 3D PROJECT CARDS --- */
-        .project-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;
-            perspective: 1000px;
-        }
+        /* --- PROJECTS --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .project-card {
             background: var(--card-bg); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 2.5rem;
-            transform-style: preserve-3d;
-            transition: border-color 0.3s;
-            position: relative;
+            padding: 2rem; border-radius: 16px; transition: 0.4s; position: relative;
         }
-        .project-card:hover { border-color: rgba(14, 165, 233, 0.4); }
-        
-        .project-inner { transform: translateZ(30px); }
-        
-        .project-header {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+        .project-card:hover { border-color: var(--accent-glow); }
+        .status-badge {
+            position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.7rem;
+            padding: 2px 8px; border-radius: 10px; background: rgba(14,165,233,0.1);
+            color: var(--accent); border: 1px solid var(--accent); font-family: monospace;
         }
-        .folder-icon { font-size: 2.5rem; color: var(--accent); }
-        .project-links a {
-            color: var(--text-secondary); font-size: 1.2rem; margin-left: 1rem; transition: 0.3s;
-        }
-        .project-links a:hover { color: var(--accent); transform: scale(1.2); display: inline-block;}
-        
-        .project-inner h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .project-inner p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem; }
-        
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-        .tech-tags span {
-            font-family: monospace; font-size: 0.8rem; color: var(--accent);
-        }
+        .project-card h3 { margin: 1rem 0; font-size: 1.3rem; }
+        .project-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-tags span { font-family: monospace; font-size: 0.75rem; color: var(--accent); opacity: 0.8; }
 
         /* --- CONTACT --- */
-        #contact { text-align: center; max-width: 800px; padding-bottom: 50px; }
-        .big-text { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; margin-bottom: 1.5rem; }
-        .social-dock {
-            display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem;
-        }
-        .social-btn {
-            width: 60px; height: 60px; border-radius: 50%;
-            background: var(--card-bg); border: 1px solid var(--glass-border);
-            display: flex; justify-content: center; align-items: center;
-            font-size: 1.5rem; color: var(--text-main); text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .social-btn:hover {
-            background: var(--accent); color: #000;
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 10px 20px var(--accent-glow);
-        }
+        #contact { text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+        .social-links a { font-size: 1.5rem; color: var(--text-main); transition: 0.3s; }
+        .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
 
-        /* --- SCROLL ANIMATIONS --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px) rotateX(-10deg) scale(0.95);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) rotateX(0) scale(1);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Responsive */
-        @media screen and (max-width: 768px) {
-            * { cursor: auto; } 
-            .cursor-dot, .cursor-outline { display: none; }
-            .nav-links { display: none; }
-            section { padding: 80px 5%; }
-            .project-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            * { cursor: auto; }
+            .cursor-dot, .cursor-outline, .nav-links { display: none; }
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
 <body>
 
     <div id="preloader">
-        <div class="loader-text">SYS_BOOT: NOVA</div>
+        <div class="loader-text">INITIALIZING_SECURE_SESSION...</div>
         <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
 
-    <div class="cursor-dot" data-cursor></div>
-    <div class="cursor-outline" data-cursor></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <div class="bg-noise"></div>
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
 
@@ -326,254 +154,126 @@
         <div class="logo">ft_ruma<span>.</span></div>
         <ul class="nav-links">
             <li><a href="#about" class="hover-target">About</a></li>
-            <li><a href="#skills" class="hover-target">Skills</a></li>
-            <li><a href="#projects" class="hover-target">Projects</a></li>
+            <li><a href="#skills" class="hover-target">Arsenal</a></li>
+            <li><a href="#projects" class="hover-target">Work</a></li>
             <li><a href="#contact" class="hover-target">Contact</a></li>
         </ul>
     </nav>
 
     <header id="hero">
         <div class="hero-content">
-            <div class="hero-badge reveal">System Status: Online</div>
-            <h1 class="reveal" style="transition-delay: 0.1s;">Rumeth Thathsilu</h1>
-            <h2 class="typing-text reveal" style="transition-delay: 0.2s;"></h2>
-            <p class="reveal" style="transition-delay: 0.3s;">IT & Cyber Security Undergraduate | Founder & CEO at Nova Sites. I build secure, scalable, and visually stunning digital experiences.</p>
-            <div class="reveal" style="transition-delay: 0.4s;">
-                <a href="#projects" class="btn-primary hover-target">
-                    View Projects <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
+            <div class="hero-badge reveal">System Status: Secure</div>
+            <h1 class="reveal">Rumeth Thathsilu</h1>
+            <div class="typing-text reveal"></div>
+            <p class="reveal" style="max-width: 600px; color: var(--text-secondary); margin-top: 1rem;">
+                Cyber Security Undergraduate at NSBM & Victoria University. Founder of <b>Nova Sites</b>. 
+                I specialize in building secure full-stack applications and digital forensics.
+            </p>
+            <a href="#projects" class="btn-primary hover-target reveal">Explore Labs <i class="fa-solid fa-terminal"></i></a>
         </div>
     </header>
 
     <section id="about" class="reveal">
-        <h2 class="section-title">01. About Me</h2>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
-            I am a passionate technology enthusiast pursuing a Bachelor of Information Technology with a Major in Cyber Security at Victoria University (NSBM Green University). Based in Matara, Sri Lanka.
-        </p>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 800px;">
-            As the founder of <strong>Nova Sites</strong>, I lead a digital agency specializing in modern web design, mobile application development, and digital branding. I bridge the gap between robust backend security and beautiful frontend execution.
+        <h2 class="section-title">01. Overview</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px;">
+            Based in Matara, Sri Lanka, I bridge the gap between creative development and defensive security. 
+            Whether it's hardening a MERN stack application or designing mobile experiences with Flutter, 
+            my focus is always on <b>performance, security, and scalability.</b>
         </p>
     </section>
 
     <section id="skills" class="reveal">
         <h2 class="section-title">02. Tech Arsenal</h2>
-        
-        <div class="skill-category-wrapper">
-            <h3 class="category-heading"><i class="fa-solid fa-laptop-code" style="margin-right: 8px;"></i> Frontend & Mobile</h3>
-            <div class="skills-grid">
-                <div class="skill-item hover-target"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
-                <div class="skill-item hover-target"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
-                <div class="skill-item hover-target"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
-                <div class="skill-item hover-target"><i class="fa-brands fa-react"></i><span>React.js</span></div>
-                <div class="skill-item hover-target"><i class="fa-solid fa-bolt"></i><span>Next.js</span></div>
-                <div class="skill-item hover-target"><i class="fa-solid fa-mobile-screen"></i><span>Flutter</span></div>
-            </div>
+        <div class="skills-grid">
+            <div class="skill-item hover-target"><i class="fa-solid fa-shield-halved"></i><span>Cyber Security</span></div>
+            <div class="skill-item hover-target"><i class="fa-brands fa-react"></i><span>React/Next.js</span></div>
+            <div class="skill-item hover-target"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+            <div class="skill-item hover-target"><i class="fa-solid fa-mobile-screen"></i><span>Flutter</span></div>
+            <div class="skill-item hover-target"><i class="fa-brands fa-python"></i><span>Python</span></div>
+            <div class="skill-item hover-target"><i class="fa-solid fa-database"></i><span>MySQL/NoSQL</span></div>
         </div>
-
-        <div class="skill-category-wrapper">
-            <h3 class="category-heading"><i class="fa-solid fa-server" style="margin-right: 8px;"></i> Backend & Database</h3>
-            <div class="skills-grid">
-                <div class="skill-item hover-target"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
-                <div class="skill-item hover-target"><i class="fa-brands fa-php"></i><span>PHP</span></div>
-                <div class="skill-item hover-target"><i class="fa-solid fa-database"></i><span>SQL / MySQL</span></div>
-                <div class="skill-item hover-target"><i class="fa-solid fa-code-branch"></i><span>REST APIs</span></div>
-            </div>
-        </div>
-
-        <div class="skill-category-wrapper">
-            <h3 class="category-heading"><i class="fa-solid fa-wrench" style="margin-right: 8px;"></i> Core & Tools</h3>
-            <div class="skills-grid">
-                <div class="skill-item hover-target"><i class="fa-solid fa-shield-halved"></i><span>Cyber Security</span></div>
-                <div class="skill-item hover-target"><i class="fa-brands fa-github"></i><span>Git & GitHub</span></div>
-                <div class="skill-item hover-target"><i class="fa-solid fa-pen-nib"></i><span>UI / UX Design</span></div>
-            </div>
-        </div>
-
     </section>
 
-    <section id="projects">
-        <h2 class="section-title reveal">03. Featured Work</h2>
+    <section id="projects" class="reveal">
+        <h2 class="section-title">03. Deployment Log</h2>
         <div class="project-grid">
-            
-            <div class="project-card reveal hover-target tilt-card">
-                <div class="project-inner">
-                    <div class="project-header">
-                        <i class="fa-regular fa-folder-open folder-icon"></i>
-                        <div class="project-links">
-                            <a href="https://github.com/ft_ruma" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                    <h3>GuardianGo</h3>
-                    <p>A location-based alarm Android app designed for public transport users. It tracks live location and triggers alerts ensuring users never miss their designated stop.</p>
-                    <div class="tech-tags">
-                        <span>Android Studio</span><span>Java</span><span>Kotlin</span>
-                    </div>
-                </div>
+            <div class="project-card hover-target">
+                <span class="status-badge">70% Stable</span>
+                <i class="fa-regular fa-folder-open" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3>GuardianGo</h3>
+                <p>A location-based alarm app for transit safety. Built to ensure public transport users never miss a stop via real-time geofencing.</p>
+                <div class="tech-tags"><span>Android</span><span>Kotlin</span><span>Firebase</span></div>
             </div>
-
-            <div class="project-card reveal hover-target tilt-card" style="transition-delay: 0.1s;">
-                <div class="project-inner">
-                    <div class="project-header">
-                        <i class="fa-regular fa-folder-open folder-icon"></i>
-                        <div class="project-links">
-                            <a href="https://github.com/ft_ruma" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                    <h3>Ride-Sharing App</h3>
-                    <p>A scalable ride-sharing mobile application clone. Integrates real-time map tracking, secure user authentication, and a modern, frictionless UI/UX.</p>
-                    <div class="tech-tags">
-                        <span>Flutter</span><span>Firebase</span><span>Dart</span>
-                    </div>
-                </div>
+            <div class="project-card hover-target">
+                <i class="fa-solid fa-code-branch" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3>Nova Sites Agency</h3>
+                <p>The digital storefront for my agency. Specializing in high-end web architecture and secure digital branding for global clients.</p>
+                <div class="tech-tags"><span>MERN</span><span>PHP</span><span>UX/UI</span></div>
             </div>
-
-            <div class="project-card reveal hover-target tilt-card" style="transition-delay: 0.2s;">
-                <div class="project-inner">
-                    <div class="project-header">
-                        <i class="fa-regular fa-folder-open folder-icon"></i>
-                        <div class="project-links">
-                            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </div>
-                    <h3>Nova Sites Agency</h3>
-                    <p>The official digital storefront for my agency. Delivering custom web environments, branding, and mobile solutions to clients worldwide.</p>
-                    <div class="tech-tags">
-                        <span>HTML/CSS/JS</span><span>PHP</span><span>UI/UX</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <section id="contact" class="reveal">
-        <h2 style="color: var(--accent); font-family: monospace; margin-bottom: 10px;">04. What's Next?</h2>
-        <div class="big-text">Get In Touch</div>
-        <p>Currently open for new opportunities, cyber security projects, and web development collaborations. My inbox is always open.</p>
-        <a href="mailto:rumethft@gmail.com" class="btn-primary hover-target" style="margin-top: 20px;">
-            <i class="fa-regular fa-envelope"></i> Say Hello
-        </a>
-        
-        <div class="social-dock">
-            <a href="https://github.com/ft_ruma" target="_blank" class="social-btn hover-target"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/rumeth-thathsilu/" target="_blank" class="social-btn hover-target"><i class="fa-brands fa-linkedin-in"></i></a>
+    <footer id="contact" class="reveal" style="padding: 100px 10%;">
+        <h2 style="color: var(--accent); font-family: monospace;">04. Transmission</h2>
+        <h1 style="font-size: 3rem;">Get In Touch</h1>
+        <p style="color: var(--text-secondary);">Currently accepting security audits and web collaborations.</p>
+        <a href="mailto:rumethft@gmail.com" class="btn-primary hover-target">Send Encrypted Mail</a>
+        <div class="social-links">
+            <a href="https://github.com/ft_ruma" target="_blank" class="hover-target"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/rumeth-thathsilu" target="_blank" class="hover-target"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-    </section>
-
-    <footer style="text-align: center; padding: 2rem; color: var(--text-secondary); font-family: monospace; font-size: 0.9rem;">
-        <p>Built by Rumeth Thathsilu &copy; 2026</p>
+        <p style="margin-top: 4rem; font-family: monospace; font-size: 0.8rem; opacity: 0.5;">© 2026 RUMETH THATHSILU // ALL RIGHTS RESERVED</p>
     </footer>
 
     <script>
-        // 1. Preloader Logic
+        // Preloader
         window.addEventListener('load', () => {
             setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                setTimeout(() => { preloader.style.visibility = 'hidden'; }, 800);
-            }, 1500); 
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('preloader').style.visibility = 'hidden'; }, 800);
+            }, 1000);
         });
 
-        // 2. Custom Fluid Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        const hoverTargets = document.querySelectorAll('.hover-target, a, button');
-
+        // Cursor Logic
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
         window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // Dot follows exactly
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Outline follows with slight delay using animate
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            dot.style.left = outline.style.left = `${e.clientX}px`;
+            dot.style.top = outline.style.top = `${e.clientY}px`;
         });
 
-        // Cursor Hover Effects
-        hoverTargets.forEach(target => {
-            target.addEventListener('mouseenter', () => cursorOutline.classList.add('hover-state'));
-            target.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover-state'));
+        // Ambient Orb Mouse Follow
+        const orb1 = document.querySelector('.orb-1');
+        const orb2 = document.querySelector('.orb-2');
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) / 20;
+            const y = (e.clientY - window.innerHeight / 2) / 20;
+            orb1.style.transform = `translate(${x}px, ${y}px)`;
+            orb2.style.transform = `translate(${-x}px, ${-y}px)`;
         });
 
-        // 3. Typing Effect (Terminal Style)
-        const typingText = document.querySelector('.typing-text');
-        const phrases = ['> Cyber Security Enthusiast_', '> Full-Stack Web Developer_', '> Mobile App Creator_'];
-        let phraseIndex = 0;
-        let letterIndex = 0;
-        let isDeleting = false;
-
+        // Typing Effect
+        const phrases = ['> Cyber Security Specialist', '> Full-Stack Developer', '> Founder @ Nova Sites'];
+        let i = 0, j = 0, current = '', isDeleting = false;
         function type() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                typingText.textContent = currentPhrase.substring(0, letterIndex - 1);
-                letterIndex--;
-            } else {
-                typingText.textContent = currentPhrase.substring(0, letterIndex + 1);
-                letterIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 30 : 70;
-
-            if (!isDeleting && letterIndex === currentPhrase.length) {
-                typeSpeed = 2000; // Pause at end
-                isDeleting = true;
-            } else if (isDeleting && letterIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
-            setTimeout(type, typeSpeed);
+            const full = phrases[i];
+            current = isDeleting ? full.substring(0, j--) : full.substring(0, j++);
+            document.querySelector('.typing-text').textContent = current;
+            if (!isDeleting && j === full.length + 1) { isDeleting = true; setTimeout(type, 2000); }
+            else if (isDeleting && j === 0) { isDeleting = false; i = (i + 1) % phrases.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDeleting ? 50 : 100); }
         }
-        setTimeout(type, 2000); 
+        type();
 
-        // 4. Scroll Reveal (3D Pop-in)
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        // Reveal on Scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            });
-        }, revealOptions);
-
-        revealElements.forEach(el => revealOnScroll.observe(el));
-
-        // 5. 3D Card Tilt Effect (Vanilla JS Math)
-        const cards = document.querySelectorAll('.tilt-card');
-        
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; 
-                const y = e.clientY - rect.top;  
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -10; 
-                const rotateY = ((x - centerX) / centerX) * 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            });
-            
-            card.addEventListener('mouseenter', () => {
-                card.style.transition = 'none'; 
-            });
-        });
+        // Console Easter Egg
+        console.log("%c[!] PORT SCAN DETECTED: ACCESS GRANTED", "color: #0ea5e9; font-weight: bold; font-size: 16px;");
+        console.log("Welcome, Rumeth. All systems operational.");
     </script>
 </body>
 </html>
