@@ -124,17 +124,18 @@
         .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; }
 
         /* --- LANGUAGE GRID --- */
+        .lang-category-title { margin-top: 3rem; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 1.1rem; border-left: 2px solid var(--accent); padding-left: 10px;}
         .lang-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1.5rem; margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.5rem;
         }
         .lang-card {
             background: var(--bg-card); border: 1px solid var(--border-glass);
             padding: 1.5rem; border-radius: 12px; text-align: center; transition: 0.3s;
         }
-        .lang-card:hover { border-color: var(--accent); transform: scale(1.05); }
-        .lang-card i { font-size: 2rem; color: var(--accent); margin-bottom: 10px; display: block; }
-        .lang-card span { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+        .lang-card:hover { border-color: var(--accent); transform: scale(1.05); background: rgba(14, 165, 233, 0.05);}
+        .lang-card i { font-size: 2.2rem; color: var(--accent); margin-bottom: 10px; display: block; }
+        .lang-card span { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; color: var(--text-main); }
 
         /* --- SKILLS BARS --- */
         .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
@@ -191,10 +192,10 @@
     <header id="hero">
         <div class="hero-content">
             <div class="status-pill">
-                <span class="pulse"></span> ● SYSTEM_READY: PORTFOLIO_V3.1
+                <span class="pulse"></span> ● SYSTEM_READY: PORTFOLIO_V3.2
             </div>
             <h1 class="reveal">Rumeth Thathsilu</h1>
-            <h2 class="reveal">Cyber Security Major & Digital Solutions Architect</h2>
+            <h2 class="reveal">Cyber Security Major & MERN Stack Architect</h2>
             
             <div class="terminal-window reveal">
                 <div class="terminal-header">
@@ -202,7 +203,8 @@
                 </div>
                 <div class="terminal-body">
                     > Initializing kernel...<br>
-                    > Environment: Victoria University // NSBM Green University<br>
+                    > Academic: Victoria University // NSBM Green University<br>
+                    > Core Stack: MERN + Flutter + CyberSec<br>
                     > Status: CEO @ Nova Sites_
                 </div>
             </div>
@@ -218,29 +220,37 @@
 
     <section id="about" class="reveal">
         <span class="section-num">01.</span>
-        <h2 class="section-title">Professional Profile</h2>
+        <h2 class="section-title">The Profile</h2>
         <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 900px;">
-            Undergraduate student pursuing a <span style="color: #fff;">Bachelor of Information Technology</span> with a Major in <span style="color: var(--accent);">Cyber Security</span>. I bridge the gap between creative development and defensive systems, focusing on MERN stack, mobile innovation with Flutter, and cryptographic security.
+            A technology strategist specializing in <span style="color: var(--accent);">Cyber Security</span> and secure full-stack development. My methodology combines the defensive mindset of security auditing with the creative execution of the <span style="color: #fff;">MERN stack</span> and mobile-first architecture.
         </p>
     </section>
 
-    <!-- NEW LANGUAGES SECTION -->
+    <!-- ENHANCED LANGUAGES SECTION -->
     <section id="languages" class="reveal">
         <span class="section-num">02.</span>
-        <h2 class="section-title">Core Languages</h2>
+        <h2 class="section-title">Technical Stack</h2>
         
-        <h3 style="margin-bottom: 1rem; color: var(--text-muted);">Programming & Scripting</h3>
+        <h3 class="lang-category-title">MERN Stack Ecosystem</h3>
         <div class="lang-grid">
-            <div class="lang-card hover-target"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+            <div class="lang-card hover-target"><i class="fa-solid fa-leaf"></i><span>MongoDB</span></div>
+            <div class="lang-card hover-target"><i class="fa-solid fa-server"></i><span>Express.js</span></div>
+            <div class="lang-card hover-target"><i class="fa-brands fa-react"></i><span>React.js</span></div>
+            <div class="lang-card hover-target"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+        </div>
+
+        <h3 class="lang-category-title">Programming & Logic</h3>
+        <div class="lang-grid">
+            <div class="lang-card hover-target"><i class="fa-brands fa-js"></i><span>JavaScript (ES6+)</span></div>
             <div class="lang-card hover-target"><i class="fa-brands fa-python"></i><span>Python</span></div>
             <div class="lang-card hover-target"><i class="fa-brands fa-php"></i><span>PHP</span></div>
             <div class="lang-card hover-target"><i class="fa-solid fa-code"></i><span>Dart</span></div>
-            <div class="lang-card hover-target"><i class="fa-solid fa-terminal"></i><span>Java/Kotlin</span></div>
-            <div class="lang-card hover-target"><i class="fa-solid fa-database"></i><span>SQL</span></div>
+            <div class="lang-card hover-target"><i class="fa-solid fa-terminal"></i><span>Java / Kotlin</span></div>
         </div>
 
-        <h3 style="margin-top: 3rem; margin-bottom: 1rem; color: var(--text-muted);">Web & Styling</h3>
+        <h3 class="lang-category-title">Database & Web Core</h3>
         <div class="lang-grid">
+            <div class="lang-card hover-target"><i class="fa-solid fa-database"></i><span>MySQL / SQL</span></div>
             <div class="lang-card hover-target"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
             <div class="lang-card hover-target"><i class="fa-brands fa-css3-alt"></i><span>CSS3 / SCSS</span></div>
         </div>
@@ -248,7 +258,7 @@
 
     <section id="skills" class="reveal">
         <span class="section-num">03.</span>
-        <h2 class="section-title">Ecosystem Proficiency</h2>
+        <h2 class="section-title">Security & Frameworks</h2>
         <div class="skills-container">
             <div class="skill-group">
                 <h3>Cyber Security Focus</h3>
@@ -257,19 +267,19 @@
                     <div class="bar-bg"><div class="bar-fill" style="--target-width: 85%;"></div></div>
                 </div>
                 <div class="skill-bar-item">
-                    <div class="skill-info"><span>Network Security (RSA/OSI)</span><span>90%</span></div>
+                    <div class="skill-info"><span>Web Application Security</span><span>90%</span></div>
                     <div class="bar-bg"><div class="bar-fill" style="--target-width: 90%;"></div></div>
                 </div>
             </div>
 
             <div class="skill-group">
-                <h3>Architecture & Tools</h3>
+                <h3>Architecture</h3>
                 <div class="skill-bar-item">
-                    <div class="skill-info"><span>Flutter (Cross-Platform)</span><span>95%</span></div>
+                    <div class="skill-info"><span>Flutter Mobile Dev</span><span>95%</span></div>
                     <div class="bar-bg"><div class="bar-fill" style="--target-width: 95%;"></div></div>
                 </div>
                 <div class="skill-bar-item">
-                    <div class="skill-info"><span>MERN Stack</span><span>88%</span></div>
+                    <div class="skill-info"><span>API Design & Integration</span><span>88%</span></div>
                     <div class="bar-bg"><div class="bar-fill" style="--target-width: 88%;"></div></div>
                 </div>
             </div>
@@ -278,33 +288,33 @@
 
     <section id="projects" class="reveal">
         <span class="section-num">04.</span>
-        <h2 class="section-title">Featured Deployments</h2>
+        <h2 class="section-title">Featured Work</h2>
         <div class="project-grid">
             <div class="project-card">
                 <i class="fa-solid fa-shield-virus" style="font-size: 2.5rem; color: var(--accent);"></i>
                 <h3>GuardianGo</h3>
-                <p style="color: var(--text-muted); margin-top: 1rem;">Location-based security alarm leveraging geofencing APIs. 70% stability achieved.</p>
-                <div class="project-tags"><span>Android</span><span>Kotlin</span><span>Geofence</span></div>
+                <p style="color: var(--text-muted); margin-top: 1rem;">MERN-integrated transit security system. Optimized for geofencing and real-time response.</p>
+                <div class="project-tags"><span>MERN</span><span>Socket.io</span><span>Google Maps API</span></div>
             </div>
 
             <div class="project-card">
                 <i class="fa-solid fa-globe" style="font-size: 2.5rem; color: var(--accent);"></i>
-                <h3>Nova Sites Hub</h3>
-                <p style="color: var(--text-muted); margin-top: 1rem;">Core infrastructure for my agency, managing secure digital assets globally.</p>
-                <div class="project-tags"><span>React</span><span>Node.js</span><span>Firebase</span></div>
+                <h3>Nova Sites Infrastructure</h3>
+                <p style="color: var(--text-muted); margin-top: 1rem;">Digital branding ecosystem built for scalability and enterprise-grade security.</p>
+                <div class="project-tags"><span>React</span><span>Express</span><span>Cloud Infrastructure</span></div>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="cta-text reveal">Let's Connect</div>
+        <div class="cta-text reveal">Initiate Contact</div>
         <div class="social-dock reveal">
             <a href="https://github.com/ft_ruma"><i class="fa-brands fa-github"></i></a>
             <a href="https://linkedin.com/in/rumeth-thathsilu/"><i class="fa-brands fa-linkedin"></i></a>
             <a href="mailto:rumethft@gmail.com"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <p style="font-family: 'JetBrains Mono'; font-size: 0.7rem; opacity: 0.3;">
-            // BUILD_STAMP: 2026.05.07.V3.1 // SECURE_ORIGIN
+            // VERSION: 3.2 // ENCRYPTED_HANDSHAKE
         </p>
     </footer>
 
